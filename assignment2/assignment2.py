@@ -4,12 +4,20 @@ import cv2
 import numpy as np
 import time
 
-np.random.seed(1234)
 
 cap = cv2.VideoCapture(1)
 
+
+new_width = 640
+new_height = 480
+
 while(True):
     ret, frame = cap.read()
+
+
+    ##Resize Frame
+    frame = cv2.resize(frame, (new_width, new_height))
+
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
     start = time.time()
