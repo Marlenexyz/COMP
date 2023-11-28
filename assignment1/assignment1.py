@@ -3,7 +3,7 @@ import time
 import numpy as np
 
 # 0
-cap = cv2.VideoCapture(1)           #start Camera
+cap = cv2.VideoCapture(0)           #start Camera
 
 
 while(True):
@@ -38,7 +38,7 @@ while(True):
     # cv2.putText(gray, "ProcessingTime: {:.2f}".format(prosTime), (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 0), 2)
     print("ProcessingTime: {:.2f}".format(prosTime))
     cv2.imshow('frame',frame)
-    # cv2.imshow('gray',gray)
+    cv2.imshow('gray',gray)
     # cv2.imshow('red',red)
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
