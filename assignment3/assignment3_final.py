@@ -3,7 +3,9 @@ import time
 import numpy as np
 
 
-cap = cv2.VideoCapture('https://192.168.1.76:8080/video')
+## Remember to switch to iot WLAN
+cap = cv2.VideoCapture('https://192.168.1.72:8080/video')
+# cap = cv2.VideoCapture(1)
 
 
 def compute_line(points):
@@ -36,6 +38,7 @@ window_width, window_height = 400, 300
 target_rectangle = np.array([[0, 0],[window_width, 0],[window_width, window_height],[0, window_height]])
 
 while True:
+    start = time.time()
     ret, frame = cap.read()
     if not ret:
         print("Error reading from the camera.")
@@ -44,7 +47,7 @@ while True:
     # resize frame
     # frame = cv2.resize(frame, (new_width, new_height))
 
-    start = time.time()
+    
 
     # gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     # gray = cv2.GaussianBlur(gray, (5,5),0)
@@ -91,6 +94,7 @@ while True:
                 pass
    
     end = time.time()
+
     fps = 1 / (end-start)
     cv2.putText(frame, f'FPS: {round(fps, 2)}', (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
     
